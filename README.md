@@ -29,7 +29,31 @@
 
 
 ```javascript
-
+    guessCard = id => {
+        if (!(id in guessed)) {
+        guessed.push(id);
+        jsScore += 1;
+        if (jsScore > jsHighscore) {
+            jsHighscore = jsScore;
+        }
+        var sillyArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        var sillierArray = [];
+        // re order the cards randomly
+        for (var i = 0; i < 12; i++) {
+            var newRandom = Math.floor(Math.random() * sillyArray.length);
+            sillierArray.push(cards[sillyArray[newRandom]]);
+            sillyArray.splice(newRandom, 1);
+      }
+      // Set this.state.cards equal to the newly randomised array
+      this.setState({ cards: sillierArray, score: jsScore, highscore: jsHighscore, message: "You guessed correctly!" });
+    }
+        else {
+            guessed = [];
+            jsScore = 0;
+            // Set this.state.cards equal to the newly randomised array
+            this.setState({ cards: cards, score: 0, message: "You guessed incorrectly! Start over!" });
+        }
+    };
 ```
 
 ## Authors
