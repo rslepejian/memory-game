@@ -14,8 +14,8 @@
 * [npm](https://www.npmjs.com/)
 * [express](https://www.npmjs.com/package/express)
 * [Heroku](https://dashboard.heroku.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/)
+* [React](https://reactjs.org/)
+* [Bootstrap](https://getbootstrap.com/)
 
 ## Deployed Link
 
@@ -23,7 +23,7 @@
 
 ## Preview of Working Site
 
-![Image]()
+![Image](memoryPreview.png)
 
 ## Code Snippet
 
