@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Cards from "./components/Cards";
 import Navbar from "./components/navbar";
 import cards from "./cards.json";
+import Nothing from "./components/bigNothing";
+
 
 var jsScore = 0;
 var jsHighscore = 0;
@@ -53,6 +55,7 @@ class App extends Component {
           highscore={this.state.highscore}
           message={this.state.message}
         ></Navbar>
+        <Nothing />
         <div className="row">
           {this.state.cards.map(cards => (
             <div className="col-md-3">
