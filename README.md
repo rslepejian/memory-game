@@ -19,7 +19,7 @@ This is a memory game built using reactjs. It tests the users abilities to remem
 
 ## Deployed Link
 
-* [See Live Site]()
+* [See Live Site](https://rslepejian.github.io/memory-game/)
 
 ## Preview of Working Site
 
