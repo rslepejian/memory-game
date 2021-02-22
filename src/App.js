@@ -5,6 +5,7 @@ import cards from "./cards.json";
 
 var jsScore = 0;
 var jsHighscore = 0;
+var jsMessage = "Click each image once!";
 
 var guessed = [];
 
@@ -13,7 +14,8 @@ class App extends Component {
   state = {
     cards: cards,
     score: jsScore,
-    highscore: jsHighscore
+    highscore: jsHighscore,
+    message: jsMessage
   };
 
   guessCard = id => {
@@ -32,13 +34,13 @@ class App extends Component {
         sillyArray.splice(newRandom, 1);
       }
       // Set this.state.cards equal to the newly randomised array
-      this.setState({ cards: sillierArray, score: jsScore, highscore: jsHighscore});
+      this.setState({ cards: sillierArray, score: jsScore, highscore: jsHighscore, message: "You guessed correctly!" });
     }
     else {
       guessed = [];
       jsScore = 0;
       // Set this.state.cards equal to the newly randomised array
-      this.setState({ cards: cards, score: 0});
+      this.setState({ cards: cards, score: 0, message: "You guessed incorrectly! Start over!" });
     }
   };
 
@@ -49,16 +51,21 @@ class App extends Component {
         <Navbar
           score={this.state.score}
           highscore={this.state.highscore}
+          message={this.state.message}
         ></Navbar>
-        {this.state.cards.map(cards => (
-          <Cards
-            guessCard={this.guessCard}
-            id={cards.id}
-            key={cards.id}
-            name={cards.name}
-            image={cards.image}
-          />
-        ))}
+        <div className="row">
+          {this.state.cards.map(cards => (
+            <div className="col-md-3">
+              <Cards
+                guessCard={this.guessCard}
+                id={cards.id}
+                key={cards.id}
+                name={cards.name}
+                image={cards.image}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
