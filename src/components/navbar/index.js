@@ -9,7 +9,9 @@ function NavBar(props) {
         <li className="brand">
           <a href="/">Clicky Game</a>
         </li>
-        <li className="">Click an image to begin!</li>
+        <li>{props.message}</li>
+      </ul>
+      <ul className="navbar-nav mr-auto">
         <li>Score: {props.score} | Top Score: {props.highscore}</li>
       </ul>
     </nav>
