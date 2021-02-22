@@ -1,29 +1,57 @@
 import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
+import Cards from "./components/Cards";
+import Navbar from "./components/navbar";
 import cards from "./cards.json";
+
+var jsScore = 0;
+var jsHighscore = 0;
+
+var guessed = [];
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    cards: cards
+    cards: cards,
+    score: jsScore,
+    highscore: jsHighscore
   };
 
   guessCard = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends: friends });
+    if (!(id in guessed)) {
+      guessed.push(id);
+      jsScore += 1;
+      if (jsScore > jsHighscore) {
+        jsHighscore = jsScore;
+      }
+      var sillyArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      var sillierArray = [];
+      // re order the cards randomly
+      for (var i = 0; i < 12; i++) {
+        var newRandom = Math.floor(Math.random() * sillyArray.length);
+        sillierArray.push(cards[sillyArray[newRandom]]);
+        sillyArray.splice(newRandom, 1);
+      }
+      // Set this.state.cards equal to the newly randomised array
+      this.setState({ cards: sillierArray, score: jsScore, highscore: jsHighscore});
+    }
+    else {
+      guessed = [];
+      jsScore = 0;
+      // Set this.state.cards equal to the newly randomised array
+      this.setState({ cards: cards, score: 0});
+    }
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
-      <Wrapper>
-        <Title>Friends List</Title>
+      <div>
+        <Navbar
+          score={this.state.score}
+          highscore={this.state.highscore}
+        ></Navbar>
         {this.state.cards.map(cards => (
-          <FriendCard
+          <Cards
             guessCard={this.guessCard}
             id={cards.id}
             key={cards.id}
@@ -31,7 +59,7 @@ class App extends Component {
             image={cards.image}
           />
         ))}
-      </Wrapper>
+      </div>
     );
   }
 }
