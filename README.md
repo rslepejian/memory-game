@@ -1,7 +1,7 @@
 # Memory Clicker
 
 ## Description
-
+This is a memory game built using reactjs. It tests the users abilities to remember what images they have seen before and what images they have already selected.
 
 ## Built With
 
@@ -14,7 +14,7 @@
 * [npm](https://www.npmjs.com/)
 * [express](https://www.npmjs.com/package/express)
 * [Heroku](https://dashboard.heroku.com/)
-* [React](https://reactjs.org/)
+* [Reactjs](https://reactjs.org/)
 * [Bootstrap](https://getbootstrap.com/)
 
 ## Deployed Link
@@ -26,7 +26,7 @@
 ![Image](memoryPreview.png)
 
 ## Code Snippet
-
+This code snippet shows how the application detects whether the user clicked on an image they have clicked before or an image they have not clicked before. It then sets the users score, highscore, and updates the message at the top of the screen. 
 
 ```javascript
     guessCard = id => {
